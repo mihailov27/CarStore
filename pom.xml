@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mmihaylov</groupId>
-	<artifactId>BrandMakerRoot</artifactId>
+	<artifactId>CarStoreRoot</artifactId>
 	<version>1.0.0</version>
 	<packaging>pom</packaging>
 
@@ -12,10 +12,11 @@
 	<description>Contains dependencies and imports of libraries.</description>
 
 	<modules>
+		<module>Model</module>
+		<module>BackendFacade</module>
+		<module>BackendImpl</module>
 		<module>RestApi</module>
 		<module>Website</module>
-		<module>Model</module>
-		<module>Backend</module>
 		<module>Ear</module>
 	</modules>
 
@@ -24,6 +25,7 @@
 		<apache.commons.version>3.9</apache.commons.version>
 		<mysql.version>5.1.48</mysql.version>
 		<jersey.servlet.version>2.29.1</jersey.servlet.version>
+		<jsoup.version>1.12.1</jsoup.version>
 	</properties>
 
 	<dependencyManagement>
@@ -54,6 +56,13 @@
 				<artifactId>jersey-container-servlet</artifactId>
 				<version>${jersey.servlet.version}</version>
 				<scope>provided</scope>
+			</dependency>
+			<!-- JSOUP -->
+			<dependency>
+				<groupId>org.jsoup</groupId>
+				<artifactId>jsoup</artifactId>
+				<version>${jsoup.version}</version>
+				<scope>compile</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

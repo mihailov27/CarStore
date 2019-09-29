@@ -1,4 +1,4 @@
-package com.mmihaylov.backend.dao.core;
+package com.mmihaylov.backend.facade.dao;
 
 import com.mmihaylov.model.db.DbEntity;
 
@@ -27,6 +27,8 @@ public abstract class BaseJpaDao<T extends DbEntity, P extends Serializable>
 
 	public T create(T entity) {
 		this.entityManager.persist(entity);
+		this.entityManager.flush();
+		this.entityManager.refresh(entity);
 		return entity;
 	}
 

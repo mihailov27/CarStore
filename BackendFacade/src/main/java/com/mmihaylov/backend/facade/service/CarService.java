@@ -1,4 +1,4 @@
-package com.mmihaylov.backend.service.core;
+package com.mmihaylov.backend.facade.service;
 
 import java.util.List;
 

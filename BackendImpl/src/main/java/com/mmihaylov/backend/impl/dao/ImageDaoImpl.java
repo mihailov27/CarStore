@@ -1,8 +1,8 @@
-package com.mmihaylov.backend.dao.impl;
+package com.mmihaylov.backend.impl.dao;
 
 
-import com.mmihaylov.backend.dao.core.BaseJpaDao;
-import com.mmihaylov.backend.dao.core.ImageDao;
+import com.mmihaylov.backend.facade.dao.BaseJpaDao;
+import com.mmihaylov.backend.facade.dao.ImageDao;
 import com.mmihaylov.model.db.Image;
 
 import javax.ejb.Stateless;

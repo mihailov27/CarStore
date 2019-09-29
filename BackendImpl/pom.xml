@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.mmihaylov</groupId>
-		<artifactId>BrandMakerRoot</artifactId>
+		<artifactId>CarStoreRoot</artifactId>
 		<version>1.0.0</version>
 	</parent>
 
+	<artifactId>BackendImpl</artifactId>
 	<packaging>jar</packaging>
-	<artifactId>Backend</artifactId>
 	<name>Backend EJB module</name>
 	<description>Contains business layer and database code.</description>
 
@@ -17,7 +17,12 @@
 		<dependency>
 			<groupId>com.mmihaylov</groupId>
 			<artifactId>Model</artifactId>
-			<version>${parent.version}</version>
+			<version>${version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mmihaylov</groupId>
+			<artifactId>BackendFacade</artifactId>
+			<version>${version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax</groupId>
@@ -30,7 +35,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>BrandMaker-Backend-${version}</finalName>
+		<finalName>BackendImpl-${version}</finalName>
 	</build>
 
 </project>

@@ -1,4 +1,4 @@
-package com.mmihaylov.backend.dao.core;
+package com.mmihaylov.backend.facade.dao;
 
 import com.mmihaylov.model.db.DbEntity;
 

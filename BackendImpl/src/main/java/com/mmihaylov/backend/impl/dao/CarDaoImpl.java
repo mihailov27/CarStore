@@ -1,7 +1,7 @@
-package com.mmihaylov.backend.dao.impl;
+package com.mmihaylov.backend.impl.dao;
 
-import com.mmihaylov.backend.dao.core.BaseJpaDao;
-import com.mmihaylov.backend.dao.core.CarDao;
+import com.mmihaylov.backend.facade.dao.BaseJpaDao;
+import com.mmihaylov.backend.facade.dao.CarDao;
 import com.mmihaylov.model.db.Car;
 
 import javax.ejb.Stateless;
