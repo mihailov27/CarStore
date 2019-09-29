@@ -19,26 +19,40 @@
 		<module>Ear</module>
 	</modules>
 
+	<properties>
+		<javaee-api.version>8.0</javaee-api.version>
+		<apache.commons.version>3.9</apache.commons.version>
+		<mysql.version>5.1.48</mysql.version>
+		<jersey.servlet.version>2.29.1</jersey.servlet.version>
+	</properties>
+
 	<dependencyManagement>
 		<dependencies>
 			<!-- Java EE 8 -->
 			<dependency>
 				<groupId>javax</groupId>
 				<artifactId>javaee-api</artifactId>
-				<version>8.0</version>
+				<version>${javaee-api.version}</version>
 				<scope>provided</scope>
 			</dependency>
 			<!-- Apache Commons -->
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
-				<version>3.9</version>
+				<version>${apache.commons.version}</version>
 			</dependency>
 			<!-- My SQL driver -->
 			<dependency>
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
-				<version>5.1.48</version>
+				<version>${mysql.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<!-- Jersey Servlet -->
+			<dependency>
+				<groupId>org.glassfish.jersey.containers</groupId>
+				<artifactId>jersey-container-servlet</artifactId>
+				<version>${jersey.servlet.version}</version>
 				<scope>provided</scope>
 			</dependency>
 		</dependencies>

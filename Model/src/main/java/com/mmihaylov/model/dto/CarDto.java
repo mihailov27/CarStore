@@ -1,5 +1,8 @@
 package com.mmihaylov.model.dto;
 
+import com.mmihaylov.model.enums.Currency;
+import com.mmihaylov.model.enums.Status;
+
 import java.io.Serializable;
 import java.util.Date;
 

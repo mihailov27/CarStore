@@ -7,5 +7,6 @@
         <class>com.mmihaylov.model.db.BaseDbEntity</class>
         <class>com.mmihaylov.model.db.Car</class>
         <class>com.mmihaylov.model.db.Image</class>
+        <class>com.mmihaylov.model.db.ImportCarTask</class>
     </persistence-unit>
 </persistence>

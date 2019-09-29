@@ -3,22 +3,18 @@ package com.mmihaylov.model.db;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 
 public abstract class BaseDbEntity implements DbEntity {
 
-	@Column
+	@Column(name = "CREATED")
 	private Date created;
 	
-	@Column
-	private String createdBy;
-	
-	@Column
+	@Column(name = "UPDATED")
 	private Date updated;
 	
-	@Column
-	private String updatedBy;
-	
-	@Column(name = "version")
+	@Column(name = "VERSION")
 	private Long version;
 	
 	public BaseDbEntity() {
@@ -33,14 +29,6 @@ public abstract class BaseDbEntity implements DbEntity {
 		this.created = created;
 	}
 
-	public String getCreatedBy() {
-		return createdBy;
-	}
-
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
-
 	public Date getUpdated() {
 		return updated;
 	}
@@ -49,19 +37,23 @@ public abstract class BaseDbEntity implements DbEntity {
 		this.updated = updated;
 	}
 
-	public String getUpdatedBy() {
-		return updatedBy;
-	}
-
-	public void setUpdatedBy(String updatedBy) {
-		this.updatedBy = updatedBy;
-	}
-
 	public Long getVersion() {
 		return version;
 	}
 
 	public void setVersion(Long version) {
 		this.version = version;
+	}
+
+	@PrePersist
+	public void prePersist() {
+		this.version = 0L;
+		this.created = new Date();
+	}
+
+	@PreUpdate
+	public void preUpdate() {
+		this.version++;
+		this.updated = new Date();
 	}
 }

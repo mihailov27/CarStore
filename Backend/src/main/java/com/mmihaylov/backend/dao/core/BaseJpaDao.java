@@ -1,6 +1,5 @@
 package com.mmihaylov.backend.dao.core;
 
-import com.mmihaylov.backend.dao.core.JpaDao;
 import com.mmihaylov.model.db.DbEntity;
 
 import javax.persistence.EntityManager;

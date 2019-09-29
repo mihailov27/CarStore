@@ -1,20 +1,21 @@
 package com.mmihaylov.model.db;
 
-import javax.persistence.Column;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
-public class Image extends BaseDbEntity {
+@Entity(name = "IMAGE")
+public class Image extends BaseDbEntity implements DbEntity {
 
-	@Column
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "ID")
 	private Long id;
 	
 	@Lob
-	@Column(columnDefinition = "BLOB")
-	private byte[] imageBytes;
+	@Column(name = "DATA")
+	private byte[] data;
 	
-	@Column
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "CAR_ID")
 	private Car car;
 	
 	public Image() {
@@ -29,12 +30,12 @@ public class Image extends BaseDbEntity {
 		this.id = id;
 	}
 
-	public byte[] getImageBytes() {
-		return imageBytes;
+	public byte[] getData() {
+		return data;
 	}
 
-	public void setImageBytes(byte[] imageBytes) {
-		this.imageBytes = imageBytes;
+	public void setData(byte[] data) {
+		this.data = data;
 	}
 
 	public Car getCar() {

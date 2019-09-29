@@ -1,55 +1,50 @@
 package com.mmihaylov.model.db;
 
+import com.mmihaylov.model.enums.Currency;
+import com.mmihaylov.model.enums.Status;
+
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.Table;
-
-import com.mmihaylov.model.dto.Currency;
-import com.mmihaylov.model.dto.Status;
+import java.util.List;
 
 @Entity
-@Table(name = "car")
+@Table(name = "CAR")
 public class Car extends BaseDbEntity implements DbEntity {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
+	@Column(name = "ID")
+	private Long id;
 	
-	@Column(name = "brand")
+	@Column(name = "BRAND")
 	private String brand;
 	
-	@Column(name = "model")
+	@Column(name = "MODEL")
 	private String model;
 	
 	@Enumerated(EnumType.ORDINAL)
+	@Column(name = "STATUS")
 	private Status status;
 	
-	@Column(name = "price")
+	@Column(name = "PRICE")
 	private Double price;
 	
 	@Enumerated(EnumType.ORDINAL)
+	@Column(name = "CURRENCY")
 	private Currency currency;
 	
-	@Lob
-	@Column(columnDefinition = "BLOB")
-	private byte[] image;
-	
-	@Column(name = "year")
+	@Column(name = "YEAR")
 	private int year;
 	
-	@Column
+	@Column(name = "MILEAGE")
 	private long mileage;
 	
-	@Column
+	@Column(name = "FIRST_REGISTRATION")
 	private Date firstRegistration;
+
+	@OneToMany( mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Image> images = new ArrayList<Image>();
 		
 	public Car() {
 		
@@ -59,7 +54,7 @@ public class Car extends BaseDbEntity implements DbEntity {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -103,14 +98,6 @@ public class Car extends BaseDbEntity implements DbEntity {
 		this.currency = currency;
 	}
 
-	public byte[] getImage() {
-		return image;
-	}
-
-	public void setImage(byte[] image) {
-		this.image = image;
-	}
-
 	public int getYear() {
 		return year;
 	}
@@ -133,5 +120,22 @@ public class Car extends BaseDbEntity implements DbEntity {
 
 	public void setFirstRegistration(Date firstRegistration) {
 		this.firstRegistration = firstRegistration;
+	}
+
+	public List<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(List<Image> images) {
+		this.images = images;
+	}
+
+	public void addImage(Image image) {
+		this.images.add(image);
+		image.setCar(this);
+	}
+
+	public void removeImage(Image image) {
+		this.images.remove(image);
 	}
 }
