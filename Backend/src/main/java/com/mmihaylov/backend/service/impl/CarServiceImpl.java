@@ -1,0 +1,46 @@
+package com.mmihaylov.backend.service.impl;
+
+import java.util.List;
+import java.util.logging.Logger;
+
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+
+import com.mmihaylov.backend.dao.core.CarDao;
+import com.mmihaylov.backend.service.core.CarService;
+import com.mmihaylov.model.db.Car;
+import com.mmihaylov.model.dto.CarDto;
+
+@Stateless
+public class CarServiceImpl implements CarService {
+	
+	private static final Logger LOGGER = Logger.getLogger(CarServiceImpl.class.getName());
+
+	@EJB(name = "carDao")
+	private CarDao carDao;
+
+	public CarDto find(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public List<CarDto> get(int size, int page) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Car update(CarDto carDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public void delete(long id) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public long create(CarDto carDto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+}

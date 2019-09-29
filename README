@@ -1,0 +1,55 @@
+1) Database:
+
+The chosen database for this project is MariaDB (an open source version of MySql).
+Link for download - https://mariadb.org/download/
+
+I recommend to install also HeidiSQL (desktop GUI for MariaDB). It's easier to administer the databases with it.
+
+Database connection:
+host -> 127.0.0.1
+user -> root
+pass -> root
+db name -> car_store
+
+JDBC driver -> mysql-connector-java-5.1.48.jar (it's fully compatible with MariaDB).
+https://dev.mysql.com/downloads/connector/j/
+
+
+2) Application server:
+
+The chosen application server is Payara (open source version of Glassfish), latest version 193
+https://www.payara.fish/software/downloads/
+
+To start the server, extract the archive to some folder on the file system.
+Then open the Command Line CMD and go to folder ${PAYARA_FOLDER}\payara5\bin
+
+Execute "asadmin start-domain" command. This will start the app server on the local host.
+Admin console is available on localhost:4848, no password required.
+
+3) Create Data Source on the Application server.
+Create data source with JNDI name on the app server.
+Useful resource (example how to create data source with Glassfish command line tools) - https://javaeesquad.github.io/tutorials/glassfishDatasource/glassFishDatasource.html
+
+
+ Steps to setup the data source
+ 
+ 	Useful link - https://blog.payara.fish/an-intro-to-connection-pools-in-payara-server-5
+ 
+     1) Copy the mysql-connector-java-5.1.48.jar to ${PAYARA_FOLDER}\payara5\glassfish\lib
+     2) From the payara command line tools, execute the following commands:
+     Open CMD and go to folder: ${PAYARA_FOLDER}\payara5\bin
+     Execute then: asadmin create-jdbc-connection-pool --restype javax.sql.DataSource --datasourceclassname com.mysql.jdbc.jdbc2.optional.MysqlDataSource --property "user=root:password=root:url=jdbc\:mysql\://127.0.0.1\:3306/car_store" carStorePool
+     
+     This will create a JDBC connection pool called "carStorePool". Next thing is to define a JNDI jdbc resource, that can be found by the application.
+     
+     To validate that the connection pool is created and configured, execute the command:
+     asaadmin ping-connection-pool carStorePool
+     You should see a result "Command ping-connection-pool executed successfully."
+     
+     Execute another command for creating a JNDI resource:
+ 	 
+ 	 asadmin create-jdbc-resource --connectionpoolid carStorePool jdbc/carStorePool
+ 	 
+ 	 Expected output:
+ 	 "JDBC resource jdbc/carStorePool created successfully. Command create-jdbc-resource executed successfully."
+     
