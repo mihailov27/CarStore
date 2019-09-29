@@ -11,13 +11,15 @@
   
   <artifactId>Website</artifactId>
   <packaging>war</packaging>
-  
+  <name>Website module</name>
+  <description>Website - contains html, css, js files.</description>
+
   <dependencies>
     
   </dependencies>
   
   <build>
-    <finalName>Website.war</finalName>
+    <finalName>BrandMaker-Website-${version}</finalName>
   </build>
   
 </project>

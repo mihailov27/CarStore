@@ -11,7 +11,77 @@
     <artifactId>Ear</artifactId>
 
     <packaging>ear</packaging>
-    <name></name>
-    <description></description>
+    <name>Ear module</name>
+    <description>Packaging to ear file, that contains all ejb and web modules plus 3rd party libs in it.</description>
+
+    <dependencies>
+        <!-- -->
+        <dependency>
+            <groupId>com.mmihaylov</groupId>
+            <artifactId>Backend</artifactId>
+            <version>${project.version}</version>
+            <type>ejb</type>
+        </dependency>
+        <!-- -->
+        <dependency>
+            <groupId>com.mmihaylov</groupId>
+            <artifactId>RestApi</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+        <!-- -->
+        <dependency>
+            <groupId>com.mmihaylov</groupId>
+            <artifactId>Website</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- EAR plugin -->
+            <plugin>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>3.0.1</version>
+                <configuration>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <version>7</version>
+                    <modules>
+                        <!-- Model -->
+                        <jarModule>
+                            <groupId>com.mmihaylov</groupId>
+                            <artifactId>Model</artifactId>
+                            <includeInApplicationXml>true</includeInApplicationXml>
+                        </jarModule>
+                        <!-- EJB -->
+                        <ejbModule>
+                            <groupId>com.mmihaylov</groupId>
+                            <artifactId>Backend</artifactId>
+                        </ejbModule>
+                        <!-- Rest -->
+                        <webModule>
+                            <groupId>com.mmihaylov</groupId>
+                            <artifactId>RestApi</artifactId>
+                            <contextRoot>/rest</contextRoot>
+                        </webModule>
+                        <!-- Website -->
+                        <webModule>
+                            <groupId>com.mmihaylov</groupId>
+                            <artifactId>Website</artifactId>
+                            <contextRoot>/web</contextRoot>
+                        </webModule>
+                    </modules>
+                    <archive>
+                        <manifestEntries>
+                            <Implementation-Version>${project.version}</Implementation-Version>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <finalName>BrandMaker-Ear-${version}</finalName>
+    </build>
 
 </project>

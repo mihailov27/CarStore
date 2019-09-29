@@ -9,6 +9,9 @@
 	</parent>
 
 	<artifactId>Model</artifactId>
+	<packaging>jar</packaging>
+	<name>Model module</name>
+	<description>Contains DTO and Entity annotated classes.</description>
 
 	<dependencies>
 		<dependency>
@@ -20,5 +23,9 @@
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<finalName>BrandMaker-Model-${version}</finalName>
+	</build>
 
 </project>

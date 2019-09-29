@@ -10,11 +10,14 @@
 
   <artifactId>RestApi</artifactId>
   <packaging>war</packaging>
+  <name>RestApi module</name>
+  <description>Rest methods</description>
 
   <dependencies>
   </dependencies>
-  
+
   <build>
-    <finalName>RestApi</finalName>
+    <finalName>BrandMaker-RestApi-${version}</finalName>
   </build>
+
 </project>
