@@ -50,7 +50,8 @@
                 <version>3.0.1</version>
                 <configuration>
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
-                    <version>7</version>
+                    <version>5</version>
+                    <skinnyWars>true</skinnyWars>
                     <modules>
                         <!-- Model -->
                         <jarModule>

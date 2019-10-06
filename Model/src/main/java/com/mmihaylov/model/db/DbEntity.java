@@ -1,6 +1,8 @@
 package com.mmihaylov.model.db;
 
-public interface DbEntity {
+import java.io.Serializable;
+
+public interface DbEntity extends Serializable {
 	
 	Long getId();
 

@@ -1,21 +1,24 @@
 package com.mmihaylov.model.db;
 
 import com.mmihaylov.model.enums.TaskStatus;
+import com.mmihaylov.model.util.CustomAuditListener;
 
 import javax.persistence.*;
 
-@Entity(name = "IMPORT_CAR_TASK")
+@Entity
+@Table(name = "IMPORT_CAR_TASK")
+@EntityListeners({CustomAuditListener.class})
 public class ImportCarTask extends BaseDbEntity implements DbEntity {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;
 
     @Column(name = "SOURCE")
     private String source;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @Column(name = "STATUS")
     private TaskStatus status;
 

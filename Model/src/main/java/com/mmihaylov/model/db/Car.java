@@ -2,6 +2,7 @@ package com.mmihaylov.model.db;
 
 import com.mmihaylov.model.enums.Currency;
 import com.mmihaylov.model.enums.Status;
+import com.mmihaylov.model.util.CustomAuditListener;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -10,10 +11,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "CAR")
+@EntityListeners({CustomAuditListener.class})
 public class Car extends BaseDbEntity implements DbEntity {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Long id;
 	
@@ -23,14 +25,14 @@ public class Car extends BaseDbEntity implements DbEntity {
 	@Column(name = "MODEL")
 	private String model;
 	
-	@Enumerated(EnumType.ORDINAL)
+	@Enumerated(EnumType.STRING)
 	@Column(name = "STATUS")
 	private Status status;
 	
 	@Column(name = "PRICE")
 	private Double price;
 	
-	@Enumerated(EnumType.ORDINAL)
+	@Enumerated(EnumType.STRING)
 	@Column(name = "CURRENCY")
 	private Currency currency;
 	

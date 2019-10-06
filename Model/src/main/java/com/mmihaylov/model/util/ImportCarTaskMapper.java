@@ -18,8 +18,8 @@ public final class ImportCarTaskMapper {
             dto.setCarId(entity.getCar() == null ? null : entity.getCar().getId());
             dto.setError(entity.getError());
             dto.setStatus(entity.getStatus());
-            dto.setCreated(entity.getCreated());
-            dto.setUpdated(entity.getUpdated());
+            dto.setCreated(entity.getAudit().getCreated());
+            dto.setUpdated(entity.getAudit().getUpdated());
             return dto;
         }
     }

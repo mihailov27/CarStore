@@ -1,40 +1,20 @@
 package com.mmihaylov.model.db;
 
+import javax.persistence.*;
 import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 
 public abstract class BaseDbEntity implements DbEntity {
 
-	@Column(name = "CREATED")
-	private Date created;
-	
-	@Column(name = "UPDATED")
-	private Date updated;
-	
+
 	@Column(name = "VERSION")
+	@Version
 	private Long version;
+
+	@Embedded
+	private Audit audit = new Audit();
 	
 	public BaseDbEntity() {
 		
-	}
-
-	public Date getCreated() {
-		return created;
-	}
-
-	public void setCreated(Date created) {
-		this.created = created;
-	}
-
-	public Date getUpdated() {
-		return updated;
-	}
-
-	public void setUpdated(Date updated) {
-		this.updated = updated;
 	}
 
 	public Long getVersion() {
@@ -45,15 +25,11 @@ public abstract class BaseDbEntity implements DbEntity {
 		this.version = version;
 	}
 
-	@PrePersist
-	public void prePersist() {
-		this.version = 0L;
-		this.created = new Date();
+	public Audit getAudit() {
+		return audit;
 	}
 
-	@PreUpdate
-	public void preUpdate() {
-		this.version++;
-		this.updated = new Date();
+	public void setAudit(Audit audit) {
+		this.audit = audit;
 	}
 }
