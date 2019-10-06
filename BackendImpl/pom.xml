@@ -9,7 +9,7 @@
 	</parent>
 
 	<artifactId>BackendImpl</artifactId>
-	<packaging>jar</packaging>
+	<packaging>ejb</packaging>
 	<name>Backend EJB module</name>
 	<description>Contains business layer and database code.</description>
 
@@ -36,6 +36,13 @@
 
 	<build>
 		<finalName>BackendImpl-${version}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<version>3.0.1</version>
+			</plugin>
+		</plugins>
 	</build>
 
 </project>

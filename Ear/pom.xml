@@ -18,26 +18,26 @@
         <dependency>
             <groupId>com.mmihaylov</groupId>
             <artifactId>BackendFacade</artifactId>
-            <version>${project.version}</version>
-            <type>ejb</type>
+            <type>ejb-client</type>
+            <version>${version}</version>
         </dependency>
         <dependency>
             <groupId>com.mmihaylov</groupId>
             <artifactId>BackendImpl</artifactId>
-            <version>${project.version}</version>
             <type>ejb</type>
+            <version>${version}</version>
         </dependency>
         <dependency>
             <groupId>com.mmihaylov</groupId>
             <artifactId>RestApi</artifactId>
-            <version>${project.version}</version>
             <type>war</type>
+            <version>${version}</version>
         </dependency>
         <dependency>
             <groupId>com.mmihaylov</groupId>
             <artifactId>Website</artifactId>
-            <version>${project.version}</version>
             <type>war</type>
+            <version>${version}</version>
         </dependency>
     </dependencies>
 
@@ -58,10 +58,10 @@
                             <includeInApplicationXml>true</includeInApplicationXml>
                         </jarModule>
                         <!-- EJB -->
-                        <jarModule>
+                        <ejbClientModule>
                             <groupId>com.mmihaylov</groupId>
                             <artifactId>BackendFacade</artifactId>
-                        </jarModule>
+                        </ejbClientModule>
                         <!-- EJB -->
                         <ejbModule>
                             <groupId>com.mmihaylov</groupId>
@@ -89,7 +89,7 @@
             </plugin>
         </plugins>
 
-        <finalName>BrandMaker-Ear-${version}</finalName>
+        <finalName>CarStore-Ear-${version}</finalName>
     </build>
 
 </project>

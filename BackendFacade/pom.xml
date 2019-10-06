@@ -10,9 +10,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>BackendFacade</artifactId>
-    <packaging>jar</packaging>
-    <name></name>
-    <description></description>
+
+    <packaging>ejb</packaging>
+    <name>BackendFacade</name>
+    <description>Interfaces of the services</description>
 
     <dependencies>
         <dependency>
@@ -27,7 +28,21 @@
     </dependencies>
 
     <build>
-        <finalName>BackendFacade-${version}</finalName>
+        <plugins>
+            <plugin>
+                <goals/>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ejb-plugin</artifactId>
+                <version>3.0.1</version>
+                <configuration>
+                    <clientIncludes>
+                        <clientInclude>/com/**</clientInclude>
+                    </clientIncludes>
+                    <generateClient>true</generateClient>
+                    <jarName>BackendFacade-${version}-client</jarName>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
 </project>
