@@ -5,6 +5,7 @@ import com.mmihaylov.model.db.ImportCarTask;
 import com.mmihaylov.model.dto.ImportCarRequestDto;
 import com.mmihaylov.model.dto.ImportCarTaskDto;
 import com.mmihaylov.model.util.ImportCarTaskMapper;
+import org.glassfish.jersey.server.ManagedAsync;
 
 import javax.ejb.EJB;
 import javax.inject.Inject;
@@ -23,9 +24,6 @@ public class ImportCarEndpoint {
 
     private static final Logger LOGGER = Logger.getLogger(ImportCarEndpoint.class.getName());
 
-    @Inject
-    private Executor executor;
-
     @EJB
     private ImportCarTaskService importCarTaskService;
 
@@ -37,13 +35,13 @@ public class ImportCarEndpoint {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
+    @ManagedAsync
     public void createImportTask(ImportCarRequestDto importCarRequestDto,
                                  @Suspended final AsyncResponse asyncResponse) {
-        LOGGER.info("Received a new POST request for import a car from external source: " + importCarRequestDto.getSource());
-        executor.execute(() -> {
-            ImportCarTask importCarTask = importCarTaskService.createTask(importCarRequestDto);
-            ImportCarTaskDto dto = ImportCarTaskMapper.toDto(importCarTask);
-            asyncResponse.resume(dto);
-        });
+        LOGGER.info("Received a new POST request for import a car from external source: " +
+                importCarRequestDto.getSource());
+        ImportCarTask importCarTask = importCarTaskService.createTask(importCarRequestDto);
+        ImportCarTaskDto dto = ImportCarTaskMapper.toDto(importCarTask);
+        asyncResponse.resume(dto);
     }
 }

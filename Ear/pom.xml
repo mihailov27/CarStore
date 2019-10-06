@@ -20,6 +20,7 @@
             <artifactId>BackendFacade</artifactId>
             <type>ejb-client</type>
             <version>${version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.mmihaylov</groupId>
@@ -61,6 +62,7 @@
                         <ejbClientModule>
                             <groupId>com.mmihaylov</groupId>
                             <artifactId>BackendFacade</artifactId>
+                            <includeInApplicationXml>true</includeInApplicationXml>
                         </ejbClientModule>
                         <!-- EJB -->
                         <ejbModule>

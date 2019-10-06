@@ -1,18 +1,16 @@
 1) Database:
 
-The chosen database for this project is MariaDB (an open source version of MySql).
-Link for download - https://mariadb.org/download/
+MySql 5.6
 
-I recommend to install also HeidiSQL (desktop GUI for MariaDB). It's easier to administer the databases with it.
 
 Database connection:
 host -> 127.0.0.1
-user -> root
-pass -> root
+user -> db_user
+pass -> pass
 db name -> car_store
 
 JDBC driver -> mysql-connector-java-5.1.48.jar (it's fully compatible with MariaDB).
-https://dev.mysql.com/downloads/connector/j/
+https://dev.mysql.com/downloads/connector/j/5.1.html
 
 
 2) Application server:
@@ -38,7 +36,7 @@ Useful resource (example how to create data source with Glassfish command line t
      1) Copy the mysql-connector-java-5.1.48.jar to ${PAYARA_FOLDER}\payara5\glassfish\lib
      2) From the payara command line tools, execute the following commands:
      Open CMD and go to folder: ${PAYARA_FOLDER}\payara5\bin
-     Execute then: asadmin create-jdbc-connection-pool --restype javax.sql.DataSource --datasourceclassname com.mysql.jdbc.jdbc2.optional.MysqlDataSource --property "user=root:password=root:url=jdbc\:mysql\://127.0.0.1\:3306/car_store" carStorePool
+     Execute then: asadmin create-jdbc-connection-pool --restype javax.sql.DataSource --datasourceclassname com.mysql.jdbc.jdbc2.optional.MysqlDataSource --property "user=db_user:password=pass:url=jdbc\:mysql\://127.0.0.1\:3306/car_store" carStorePool
      
      This will create a JDBC connection pool called "carStorePool". Next thing is to define a JNDI jdbc resource, that can be found by the application.
      

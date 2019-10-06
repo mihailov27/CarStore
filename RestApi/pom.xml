@@ -25,11 +25,13 @@
             <groupId>com.mmihaylov</groupId>
             <artifactId>BackendFacade</artifactId>
             <version>${version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.mmihaylov</groupId>
             <artifactId>BackendImpl</artifactId>
             <version>${version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>

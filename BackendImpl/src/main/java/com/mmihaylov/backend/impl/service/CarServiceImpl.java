@@ -1,22 +1,21 @@
 package com.mmihaylov.backend.impl.service;
 
-import java.util.List;
-import java.util.logging.Logger;
-
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
-
 import com.mmihaylov.backend.facade.dao.CarDao;
 import com.mmihaylov.backend.facade.service.CarService;
 import com.mmihaylov.model.db.Car;
 import com.mmihaylov.model.dto.CarDto;
+
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import java.util.List;
+import java.util.logging.Logger;
 
 @Stateless
 public class CarServiceImpl implements CarService {
 	
 	private static final Logger LOGGER = Logger.getLogger(CarServiceImpl.class.getName());
 
-	@EJB(name = "carDao")
+	@EJB
 	private CarDao carDao;
 
 	public CarDto find(long id) {
