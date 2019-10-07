@@ -18,6 +18,7 @@
 		<module>RestApi</module>
 		<module>Website</module>
 		<module>Ear</module>
+		<module>mobile-car-import-tool</module>
 	</modules>
 
 	<properties>
@@ -25,10 +26,19 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<javaee-api.version>8.0</javaee-api.version>
 		<apache.commons.version>3.9</apache.commons.version>
+		<commons.validator>1.6</commons.validator>
 		<mysql.version>5.1.48</mysql.version>
 		<jersey.servlet.version>2.29.1</jersey.servlet.version>
 		<jsoup.version>1.12.1</jsoup.version>
+		<commons.io.version>2.6</commons.io.version>
 	</properties>
+
+	<developers>
+		<developer>
+			<name>Mihail Mihaylov</name>
+			<email>msmihaylov89@gmail.com</email>
+		</developer>
+	</developers>
 
 	<dependencyManagement>
 		<dependencies>
@@ -45,6 +55,19 @@
 				<artifactId>commons-lang3</artifactId>
 				<version>${apache.commons.version}</version>
 			</dependency>
+			<!-- Commons Validator -->
+			<dependency>
+				<groupId>commons-validator</groupId>
+				<artifactId>commons-validator</artifactId>
+				<version>${commons.validator}</version>
+			</dependency>
+			<!-- Commons IO -->
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons.io.version}</version>
+			</dependency>
+
 			<!-- My SQL driver -->
 			<dependency>
 				<groupId>mysql</groupId>
