@@ -3,25 +3,25 @@ package com.mmihaylov.model.util;
 import com.mmihaylov.model.db.ImportCarTask;
 import com.mmihaylov.model.dto.ImportCarTaskDto;
 
-public final class ImportCarTaskMapper {
+public final class ImportCarTaskMapper implements EntityDtoMapper<ImportCarTask, ImportCarTaskDto> {
 
-    private ImportCarTaskMapper() {
+    public ImportCarTaskMapper() {
 
     }
 
-    public static ImportCarTaskDto toDto(ImportCarTask entity) {
-        if (entity == null) {
+    @Override
+    public ImportCarTaskDto toDto(ImportCarTask importCarTask) {
+        if (importCarTask == null) {
             return null;
         } else {
             ImportCarTaskDto dto = new ImportCarTaskDto();
-            dto.setId(entity.getId());
-            dto.setCarId(entity.getCar() == null ? null : entity.getCar().getId());
-            dto.setError(entity.getError());
-            dto.setStatus(entity.getStatus());
-            dto.setCreated(entity.getAudit().getCreated());
-            dto.setUpdated(entity.getAudit().getUpdated());
+            dto.setId(importCarTask.getId());
+            dto.setCarId(importCarTask.getCar() == null ? null : importCarTask.getCar().getId());
+            dto.setError(importCarTask.getError());
+            dto.setStatus(importCarTask.getStatus());
+            dto.setCreated(importCarTask.getAudit().getCreated());
+            dto.setUpdated(importCarTask.getAudit().getUpdated());
             return dto;
         }
     }
-
 }

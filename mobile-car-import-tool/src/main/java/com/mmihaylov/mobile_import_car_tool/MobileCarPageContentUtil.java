@@ -32,15 +32,15 @@ public class MobileCarPageContentUtil {
 
     // Public Static Methods
 
-    public static String getCarBrand(Document document) throws IOException {
+    static String getCarBrand(Document document) throws IOException {
         Element element = document.selectFirst("meta[property='og:title']");
         if (element == null || element.attr("name") == null) {
             throw new IOException("Car Brand element is not found.");
         }
-        return element.attr("name");
+        return element.attr("content");
     }
 
-    public static String getCarModel(Document document) throws IOException {
+    static String getCarModel(Document document) throws IOException {
         Element element = document.getElementById("rbt-ad-title");
         if (element == null) {
             throw new IOException("Car Model is not found.");
@@ -48,7 +48,7 @@ public class MobileCarPageContentUtil {
         return element.text();
     }
 
-    public static Long getPrice(Document document) throws IOException {
+    static Long getPrice(Document document) throws IOException {
         Element element = document.selectFirst("div#rbt-pt-v span");
         if (element == null) {
             throw new IOException("Car Price is not found.");
@@ -63,7 +63,7 @@ public class MobileCarPageContentUtil {
         }
     }
 
-    public static String getColor(Document document) throws IOException {
+    static String getColor(Document document) throws IOException {
         Element element = document.selectFirst("div#rbt-color-v");
         if (element == null || StringUtils.isBlank(element.text())) {
             throw new IOException("Car Color is not found.");
@@ -71,7 +71,7 @@ public class MobileCarPageContentUtil {
         return element.text();
     }
 
-    public static Date getFirstRegistration(Document document) throws IOException {
+    static Date getFirstRegistration(Document document) throws IOException {
         Element element = document.selectFirst("div#rbt-firstRegistration-v");
         if (element == null || StringUtils.isBlank(element.text())) {
            throw new IOException("The First Registration is not found.");
@@ -79,7 +79,7 @@ public class MobileCarPageContentUtil {
         return parseRegDate(element.text());
     }
 
-    public static Long getMileage(Document document) throws IOException {
+    static Long getMileage(Document document) throws IOException {
         Element element = document.selectFirst("div#rbt-mileage-v");
         if (element == null || StringUtils.isBlank(element.text())) {
             throw new IOException("Failed to the Mileage.");
@@ -89,7 +89,7 @@ public class MobileCarPageContentUtil {
         return new Long(cleanText);
     }
 
-    public  static  List<MobileCarImage> loadCarImages(Document document) throws IOException {
+    static  List<MobileCarImage> loadCarImages(Document document) throws IOException {
         Elements elements = document.select("div.image-gallery div.gallery-img-wrapper img");
         LOGGER.info("Count of loaded images: " + elements.size());
         List<Element> imageElements = new ArrayList<>(elements);
@@ -128,13 +128,17 @@ public class MobileCarPageContentUtil {
     }
 
     private static MobileCarImage loadImageFromElement(Element element) throws IOException {
-        String source = element.attr("src");
+        String source = element.hasAttr("src") ?
+                element.attr("src") : element.attr("data-lazy");
+
         if (StringUtils.isBlank(source)) {
             throw new IOException("The element has no src attribute." + element.html());
         }
         if (source.startsWith("//")) {
             source = source.replaceFirst("//", "");
         }
+        source = "http://" + source;
+        LOGGER.info("Loading an image: " + source);
         byte[] imgBytes = readImgFromUrlAddress(source);
         return new MobileCarImage(imgBytes);
     }

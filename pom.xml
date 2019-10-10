@@ -31,6 +31,7 @@
 		<jersey.servlet.version>2.29.1</jersey.servlet.version>
 		<jsoup.version>1.12.1</jsoup.version>
 		<commons.io.version>2.6</commons.io.version>
+		<junit.version>4.12</junit.version>
 	</properties>
 
 	<developers>
@@ -82,6 +83,25 @@
 				<version>${jersey.servlet.version}</version>
 				<scope>provided</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.glassfish.jersey.core</groupId>
+				<artifactId>jersey-client</artifactId>
+				<version>${jersey.servlet.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.glassfish.jersey.inject</groupId>
+				<artifactId>jersey-hk2</artifactId>
+				<version>2.29.1</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>2.10.0</version>
+				<scope>test</scope>
+			</dependency>
+
 			<!-- JSOUP -->
 			<dependency>
 				<groupId>org.jsoup</groupId>
@@ -89,6 +109,14 @@
 				<version>${jsoup.version}</version>
 				<scope>compile</scope>
 			</dependency>
+			<!-- JUnit -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 

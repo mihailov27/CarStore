@@ -30,17 +30,17 @@ public class Car extends BaseDbEntity implements DbEntity {
 	private Status status;
 	
 	@Column(name = "PRICE")
-	private Double price;
+	private Long price;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "CURRENCY")
 	private Currency currency;
 	
 	@Column(name = "YEAR")
-	private int year;
+	private Integer year;
 	
 	@Column(name = "MILEAGE")
-	private long mileage;
+	private Long mileage;
 	
 	@Column(name = "FIRST_REGISTRATION")
 	private Date firstRegistration;
@@ -84,11 +84,11 @@ public class Car extends BaseDbEntity implements DbEntity {
 		this.status = status;
 	}
 
-	public Double getPrice() {
+	public Long getPrice() {
 		return price;
 	}
 
-	public void setPrice(Double price) {
+	public void setPrice(Long price) {
 		this.price = price;
 	}
 
@@ -100,19 +100,19 @@ public class Car extends BaseDbEntity implements DbEntity {
 		this.currency = currency;
 	}
 
-	public int getYear() {
+	public Integer getYear() {
 		return year;
 	}
 
-	public void setYear(int year) {
+	public void setYear(Integer year) {
 		this.year = year;
 	}
 
-	public long getMileage() {
+	public Long getMileage() {
 		return mileage;
 	}
 
-	public void setMileage(long mileage) {
+	public void setMileage(Long mileage) {
 		this.mileage = mileage;
 	}
 

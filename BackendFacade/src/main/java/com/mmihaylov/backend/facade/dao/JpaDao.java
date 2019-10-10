@@ -3,6 +3,7 @@ package com.mmihaylov.backend.facade.dao;
 import com.mmihaylov.model.db.DbEntity;
 
 import java.io.Serializable;
+import java.util.List;
 
 public interface  JpaDao<T extends DbEntity, P extends Serializable> {
 
@@ -17,4 +18,7 @@ public interface  JpaDao<T extends DbEntity, P extends Serializable> {
 
 	/** Creating an entity. */
 	T create(T entity);
+
+	List<T> getPageList(int page, int pageSize);
+
 }

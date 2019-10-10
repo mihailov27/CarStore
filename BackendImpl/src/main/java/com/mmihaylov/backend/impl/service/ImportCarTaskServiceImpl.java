@@ -1,14 +1,17 @@
 package com.mmihaylov.backend.impl.service;
 
-import com.mmihaylov.backend.facade.CarStoreException;
+import com.mmihaylov.backend.facade.CarStoreBusinessException;
 import com.mmihaylov.backend.facade.dao.ImportCarTaskDao;
 import com.mmihaylov.backend.facade.service.ImportCarTaskHandler;
 import com.mmihaylov.backend.facade.service.ImportCarTaskService;
 import com.mmihaylov.model.db.ImportCarTask;
 import com.mmihaylov.model.dto.ImportCarRequestDto;
+import com.mmihaylov.model.dto.ImportCarTaskDto;
 import com.mmihaylov.model.enums.TaskStatus;
+import com.mmihaylov.model.util.ImportCarTaskMapper;
 
-import javax.ejb.*;
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import java.util.logging.Logger;
 
 @Stateless
@@ -25,7 +28,7 @@ public class ImportCarTaskServiceImpl implements ImportCarTaskService {
     // EJB public methods
 
     @Override
-    public ImportCarTask createTask(ImportCarRequestDto importCarRequestDto) {
+    public ImportCarTaskDto createTask(ImportCarRequestDto importCarRequestDto) {
         LOGGER.fine("Creating a new ImportCarTask.");
         ImportCarTask importCarTask = new ImportCarTask();
         importCarTask.setStatus(TaskStatus.CREATED);
@@ -35,37 +38,17 @@ public class ImportCarTaskServiceImpl implements ImportCarTaskService {
         // before exit the method, call the handler to start processing (Async bus. method in another transaction).
         importCarTaskHandler.processImporCarTask(importCarTask.getId());
 
-        return importCarTask;
+        // map to Dto.
+        return ImportCarTaskMapper.toDto(importCarTask);
     }
 
     @Override
-    public ImportCarTask processTask(Long id) {
-
-        LOGGER.info("Start working on a ImportCarTask with id: " + id);
+    public ImportCarTaskDto getImportTaskStatus(Long id) {
         ImportCarTask importCarTask = this.importCarTaskDao.find(id);
-
         if (importCarTask == null) {
-            throw new CarStoreException("No import task found with id: " + id);
+            throw new CarStoreBusinessException("No ImporTask found with id: " + id);
+        } else {
+            return ImportCarTaskMapper.toDto(importCarTask);
         }
-        if (importCarTask.getStatus() != TaskStatus.CREATED) {
-            throw new CarStoreException("The ImportCarTask record with id: " + id +
-                    " can't be processed. The status is: " + importCarTask.getStatus().name());
-        }
-
-        importCarTask.setStatus(TaskStatus.PENDING);
-
-        // working on the task.
-        workOnTask(importCarTask);
-
-        return importCarTask;
-    }
-
-    // Private Methods
-
-    private void workOnTask(ImportCarTask importCarTask) {
-        LOGGER.fine("Working on ImportCarTask entry " + importCarTask.getId());
-
-        throw new CarStoreException("failure.");
-        //importCarTask.setStatus(TaskStatus.COMPLETED);
     }
 }

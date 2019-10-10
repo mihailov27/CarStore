@@ -1,37 +1,41 @@
 package com.mmihaylov.model.dto;
 
+import com.mmihaylov.model.db.Car;
 import com.mmihaylov.model.enums.Currency;
 import com.mmihaylov.model.enums.Status;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
 public class CarDto implements Serializable {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	private Long id;
-	
+
+	@NotNull
 	private String brand;
-	
+
+	@NotNull
 	private String model;
-	
+
+	@NotNull
 	private Status status;
-	
-	private Double price;
-	
+
+	@NotNull
+	private Long price;
+
+	@NotNull
 	private Currency currency;
-	
-	private byte[] image;
-	
+
+	@NotNull
+	private Long mileage;
+
 	private int year;
-	
-	private long mileage;
-	
-	private Date added;
+
+	private Date firstRegistration;
 	
 	public CarDto() {
 		
@@ -69,11 +73,11 @@ public class CarDto implements Serializable {
 		this.status = status;
 	}
 
-	public Double getPrice() {
+	public Long getPrice() {
 		return price;
 	}
 
-	public void setPrice(Double price) {
+	public void setPrice(Long price) {
 		this.price = price;
 	}
 
@@ -85,14 +89,6 @@ public class CarDto implements Serializable {
 		this.currency = currency;
 	}
 
-	public byte[] getImage() {
-		return image;
-	}
-
-	public void setImage(byte[] image) {
-		this.image = image;
-	}
-
 	public int getYear() {
 		return year;
 	}
@@ -101,34 +97,70 @@ public class CarDto implements Serializable {
 		this.year = year;
 	}
 
-	public long getMileage() {
+	public Date getFirstRegistration() {
+		return firstRegistration;
+	}
+
+	public void setFirstRegistration(Date firstRegistration) {
+		this.firstRegistration = firstRegistration;
+	}
+
+	public Long getMileage() {
 		return mileage;
 	}
 
-	public void setMileage(long mileage) {
+	public void setMileage(Long mileage) {
 		this.mileage = mileage;
 	}
 
-	public Date getAdded() {
-		return added;
+	@Override
+	public int hashCode() {
+		return new HashCodeBuilder()
+				.append(id)
+				.append(brand)
+				.append(model)
+				.append(status)
+				.append(price)
+				.append(currency)
+				.append(mileage)
+				.append(year)
+				.append(firstRegistration)
+				.hashCode();
 	}
 
-	public void setAdded(Date added) {
-		this.added = added;
-	}
-	
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null || !(obj instanceof CarDto)) {
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof CarDto)) {
 			return false;
 		}
 		CarDto other = (CarDto) obj;
-		return super.equals(obj);
+		return new EqualsBuilder()
+				.append(this.id, other.id)
+				.append(this.brand, other.brand)
+				.append(this.status, other.status)
+				.append(this.model, other.model)
+				.append(this.price, other.price)
+				.append(this.currency, other.currency)
+				.append(this.mileage, other.mileage)
+				.append(this.year, other.year)
+				.append(this.firstRegistration, other.firstRegistration)
+				.build();
 	}
-	
+
 	@Override
-	public int hashCode() {
-		// TODO Auto-generated method stub
-		return super.hashCode();
+	public String toString() {
+		return new ToStringBuilder(id)
+				.append(brand)
+				.append(model)
+				.append(status)
+				.append(price)
+				.append(currency)
+				.append(mileage)
+				.append(year)
+				.append(firstRegistration)
+				.toString();
 	}
 }

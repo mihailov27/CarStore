@@ -10,14 +10,14 @@ import com.mmihaylov.model.dto.CarDto;
 @Local
 public interface CarService {
 
-	long create(CarDto carDto);
+	Long create(CarDto carDto);
 	
-	Car update(CarDto carDto);
+	Car update(Long id, CarDto carDto);
 	
-	void delete(long id);
+	void delete(Long id);
 	
-	CarDto find(long id);
+	CarDto getCar(Long id);
 	
-	List<CarDto> get(int size, int page);
+	List<CarDto> getCars(int page, int pageSize);
 	
 }

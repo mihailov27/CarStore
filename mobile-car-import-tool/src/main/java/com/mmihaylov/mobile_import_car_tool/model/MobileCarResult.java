@@ -92,4 +92,8 @@ public class MobileCarResult implements Serializable {
     public void setMobileCarImageList(List<MobileCarImage> mobileCarImageList) {
         this.mobileCarImageList = mobileCarImageList;
     }
+
+    public void addMobileCarImage(MobileCarImage mobileCarImage) {
+        this.mobileCarImageList.add(mobileCarImage);
+    }
 }
