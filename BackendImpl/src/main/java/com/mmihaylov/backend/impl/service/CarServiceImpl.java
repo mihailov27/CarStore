@@ -53,10 +53,6 @@ public class CarServiceImpl implements CarService {
 			car.setStatus(carDto.getStatus());
 		}
 
-		if (shouldUpdate(car.getYear(), carDto.getYear())) {
-			car.setYear(carDto.getYear());
-		}
-
 		if (shouldUpdate(car.getFirstRegistration(), carDto.getFirstRegistration())) {
 			car.setFirstRegistration(carDto.getFirstRegistration());
 		}
@@ -103,7 +99,6 @@ public class CarServiceImpl implements CarService {
 		car.setFirstRegistration(carDto.getFirstRegistration());
 		car.setMileage(carDto.getMileage());
 		car.setStatus(carDto.getStatus());
-		car.setYear(carDto.getYear());
 		// save to db
 		Car persistedCar = this.carDao.create(car);
 		return persistedCar.getId();

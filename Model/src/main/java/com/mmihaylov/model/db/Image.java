@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name = "IMAGE")
 @EntityListeners({CustomAuditListener.class})
 @NamedQueries({
-		@NamedQuery(name = Image.GET_IMAGE_ID_BY_CAR_ID, query = "SELECT img.id FROM Image img JOIN img.car WHERE car.id = :carId")
+		@NamedQuery(name = Image.GET_IMAGE_ID_BY_CAR_ID, query = "SELECT img.id FROM Image img JOIN img.car car WHERE car.id = :carId")
 })
 public class Image extends BaseDbEntity implements DbEntity {
 

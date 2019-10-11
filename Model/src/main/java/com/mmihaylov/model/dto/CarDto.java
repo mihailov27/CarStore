@@ -33,8 +33,6 @@ public class CarDto implements Serializable {
 	@NotNull
 	private Long mileage;
 
-	private int year;
-
 	private Date firstRegistration;
 	
 	public CarDto() {
@@ -89,14 +87,6 @@ public class CarDto implements Serializable {
 		this.currency = currency;
 	}
 
-	public int getYear() {
-		return year;
-	}
-
-	public void setYear(int year) {
-		this.year = year;
-	}
-
 	public Date getFirstRegistration() {
 		return firstRegistration;
 	}
@@ -123,7 +113,6 @@ public class CarDto implements Serializable {
 				.append(price)
 				.append(currency)
 				.append(mileage)
-				.append(year)
 				.append(firstRegistration)
 				.hashCode();
 	}
@@ -145,7 +134,6 @@ public class CarDto implements Serializable {
 				.append(this.price, other.price)
 				.append(this.currency, other.currency)
 				.append(this.mileage, other.mileage)
-				.append(this.year, other.year)
 				.append(this.firstRegistration, other.firstRegistration)
 				.build();
 	}
@@ -159,7 +147,6 @@ public class CarDto implements Serializable {
 				.append(price)
 				.append(currency)
 				.append(mileage)
-				.append(year)
 				.append(firstRegistration)
 				.toString();
 	}

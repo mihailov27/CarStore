@@ -1,12 +1,12 @@
 package com.mmihaylov.rest.endpoints;
 
+import com.mmihaylov.rest.ResponseMapBuilder;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.HashMap;
-import java.util.Map;
 
 @Path("/test")
 public class TestEndpoint {
@@ -24,9 +24,11 @@ public class TestEndpoint {
     @Path("/json")
     @Produces(MediaType.APPLICATION_JSON)
     public Response testJson() {
-        Map<String, Object> map = new HashMap<>();
-        map.put("msg", message);
-        return Response.ok(map).build();
+        return Response
+                .status(Response.Status.OK)
+                .type(MediaType.APPLICATION_JSON)
+                .entity(new ResponseMapBuilder("msg", message).get())
+                .build();
     }
 
 }

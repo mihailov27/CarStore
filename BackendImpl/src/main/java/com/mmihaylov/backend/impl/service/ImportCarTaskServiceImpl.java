@@ -39,7 +39,7 @@ public class ImportCarTaskServiceImpl implements ImportCarTaskService {
         importCarTaskHandler.processImporCarTask(importCarTask.getId());
 
         // map to Dto.
-        return ImportCarTaskMapper.toDto(importCarTask);
+        return new ImportCarTaskMapper().toDto(importCarTask);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class ImportCarTaskServiceImpl implements ImportCarTaskService {
         if (importCarTask == null) {
             throw new CarStoreBusinessException("No ImporTask found with id: " + id);
         } else {
-            return ImportCarTaskMapper.toDto(importCarTask);
+            return new ImportCarTaskMapper().toDto(importCarTask);
         }
     }
 }

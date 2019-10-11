@@ -8,4 +8,7 @@ public class RestApiEndpoints {
 
     static final String TEST_JSON_ENDPOINT = REST_API_HOST + "/test/json";
 
+    static final String CAR_ENDPOINT = REST_API_HOST + "/car";
+
+
 }

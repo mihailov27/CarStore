@@ -31,14 +31,4 @@ public class Audit implements Serializable {
     public void setUpdated(Date updated) {
         this.updated = updated;
     }
-
-    @PrePersist
-    public void prePersist() {
-        this.created = new Date();
-    }
-
-    @PreUpdate
-    public void preUpdate() {
-        this.updated = new Date();
-    }
 }

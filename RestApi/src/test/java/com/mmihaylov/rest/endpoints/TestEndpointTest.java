@@ -50,7 +50,6 @@ public class TestEndpointTest {
         } catch (IOException ioe) {
             Assert.fail("Failed to parse JSON.\n" + ioe);
         }
-
     }
 
 }

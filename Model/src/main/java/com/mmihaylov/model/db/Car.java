@@ -36,9 +36,6 @@ public class Car extends BaseDbEntity implements DbEntity {
 	@Column(name = "CURRENCY")
 	private Currency currency;
 	
-	@Column(name = "YEAR")
-	private Integer year;
-	
 	@Column(name = "MILEAGE")
 	private Long mileage;
 	
@@ -98,14 +95,6 @@ public class Car extends BaseDbEntity implements DbEntity {
 
 	public void setCurrency(Currency currency) {
 		this.currency = currency;
-	}
-
-	public Integer getYear() {
-		return year;
-	}
-
-	public void setYear(Integer year) {
-		this.year = year;
 	}
 
 	public Long getMileage() {

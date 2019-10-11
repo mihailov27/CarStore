@@ -32,4 +32,15 @@ public abstract class BaseDbEntity implements DbEntity {
 	public void setAudit(Audit audit) {
 		this.audit = audit;
 	}
+
+	@PrePersist
+	public void prePersist() {
+		this.audit.setCreated(new Date());
+	}
+
+	@PreUpdate
+	public void preUpdate() {
+		this.audit.setUpdated(new Date());
+	}
+
 }

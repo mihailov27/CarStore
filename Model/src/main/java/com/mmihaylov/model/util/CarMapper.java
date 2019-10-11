@@ -19,11 +19,11 @@ public class CarMapper implements EntityDtoMapper<Car, CarDto> {
             carDto.setBrand(car.getBrand());
             carDto.setModel(car.getModel());
             carDto.setStatus(car.getStatus());
-            carDto.setYear(car.getYear());
             carDto.setFirstRegistration(car.getFirstRegistration());
             carDto.setPrice(car.getPrice());
             carDto.setCurrency(car.getCurrency());
             carDto.setMileage(car.getMileage());
+            carDto.setFirstRegistration(car.getFirstRegistration());
             return carDto;
         }
     }
