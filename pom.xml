@@ -28,7 +28,7 @@
 		<apache.commons.version>3.9</apache.commons.version>
 		<commons.validator>1.6</commons.validator>
 		<mysql.version>5.1.48</mysql.version>
-		<jersey.servlet.version>2.29.1</jersey.servlet.version>
+		<jersey.version>2.29.1</jersey.version>
 		<jsoup.version>1.12.1</jsoup.version>
 		<commons.io.version>2.6</commons.io.version>
 		<junit.version>4.12</junit.version>
@@ -80,19 +80,25 @@
 			<dependency>
 				<groupId>org.glassfish.jersey.containers</groupId>
 				<artifactId>jersey-container-servlet</artifactId>
-				<version>${jersey.servlet.version}</version>
+				<version>${jersey.version}</version>
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.glassfish.jersey.core</groupId>
 				<artifactId>jersey-client</artifactId>
-				<version>${jersey.servlet.version}</version>
+				<version>${jersey.version}</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.glassfish.jersey.inject</groupId>
 				<artifactId>jersey-hk2</artifactId>
-				<version>2.29.1</version>
+				<version>${jersey.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.glassfish.jersey.media</groupId>
+				<artifactId>jersey-media-moxy</artifactId>
+				<version>${jersey.version}</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>

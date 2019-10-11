@@ -1,6 +1,6 @@
 package com.mmihaylov.rest.endpoints;
 
-public class RestApiEndpoints {
+public final class RestApiEndpoints {
 
     static final String REST_API_HOST = "http://mihail-thinkpad-e580:8080/rest";
 
@@ -10,5 +10,5 @@ public class RestApiEndpoints {
 
     static final String CAR_ENDPOINT = REST_API_HOST + "/car";
 
-
+    static final String IMAGE_ENDPOINT = REST_API_HOST + "/images";
 }

@@ -63,8 +63,10 @@ public class CarEndpointTest {
     public void testGet() {
         CarDto carDto = client.target(RestApiEndpoints.CAR_ENDPOINT + "/2")
                 .request(MediaType.APPLICATION_JSON).get(CarDto.class);
+
         Assert.assertTrue(carDto != null);
         Assert.assertTrue(carDto.getId() == 2L);
+        Assert.assertEquals("VW", carDto.getBrand());
     }
 
 }
